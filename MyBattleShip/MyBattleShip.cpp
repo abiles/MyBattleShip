@@ -9,8 +9,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Player Player1;
 
-	Player1.PrintAllShip();
 
+	Player1.PrintShip();
+
+
+	
 	getchar();
 	return 0;
 }

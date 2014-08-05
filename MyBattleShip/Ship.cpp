@@ -4,7 +4,7 @@
 
 Ship::Ship()
 {
-	memset(m_Pos, 0, sizeof(ShipPos)*m_Size);
+	memset(m_Pos, 0, sizeof(ShipPos)*MAX_SHIP_SIZE);
 }
 
 
@@ -36,8 +36,10 @@ bool Ship::SetName(std::string inputStr)
 	return true;
 }
 
-bool Ship::SetPos(ShipPos inputPos, int posIdx)
+bool Ship::AddPos(ShipPos inputPos, int posIdx)
 {
+
+	//이런거 안될듯
 	if (!inputPos.x || !inputPos.y)
 	{
 		return false;
@@ -66,4 +68,17 @@ void Ship::PrintShipPos()
 	printf_s("\n");
 	return;
 	
+}
+
+bool Ship::IsPosFull()
+{
+	for (int i = 0; i < m_Size; i++)
+	{
+		if (m_Pos[i].x == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }

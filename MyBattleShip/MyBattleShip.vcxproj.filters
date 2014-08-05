@@ -24,6 +24,9 @@
     <ClInclude Include="Aircraft.h">
       <Filter>Ship</Filter>
     </ClInclude>
+    <ClInclude Include="BattleShip.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +42,9 @@
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Aircraft.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleShip.cpp">
       <Filter>Ship</Filter>
     </ClCompile>
   </ItemGroup>

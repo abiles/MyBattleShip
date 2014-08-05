@@ -1,14 +1,7 @@
 #pragma once
 #include "Aircraft.h"
+#include "BattleShip.h"
 
-enum Direction
-{
-	NORTH,
-	EAST,
-	SOUTH,
-	WEST,
-	MAX_DIRECTION,
-};
 
 class Player
 {
@@ -17,12 +10,13 @@ public:
 	~Player();
 
 
-	void PrintAllShip();
-	void AssignShip();
+	void PrintShip();
+	
 
 
 private:
 
 	Aircraft m_Aircraft;
+	BattleShip m_BattleShip;
 };
 
