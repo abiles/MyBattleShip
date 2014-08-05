@@ -21,6 +21,9 @@
     <ClInclude Include="Player.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Aircarft.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -34,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Aircarft.cpp">
+      <Filter>Ship</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

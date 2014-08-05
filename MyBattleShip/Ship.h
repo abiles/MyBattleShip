@@ -40,7 +40,7 @@ public:
 	ShipType GetShipType(){ return m_ShipType; }
 
 
-private:
+protected:
 	ShipType m_ShipType;
 	int m_Size;
 	int m_HP;
