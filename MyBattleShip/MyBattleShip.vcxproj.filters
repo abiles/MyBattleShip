@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ship">
+      <UniqueIdentifier>{33cb08d4-32ef-4071-9006-3fdc38265573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{c8e09b9f-d7fc-49e3-bbc9-4df58df6b911}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBattleShip.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
