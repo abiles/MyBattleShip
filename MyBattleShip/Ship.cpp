@@ -82,3 +82,17 @@ bool Ship::IsPosFull()
 
 	return true;
 }
+
+bool Ship::OverlapCheck(ShipPos inputPos)
+{
+	for (int i = 0; i < MAX_SHIP_SIZE; i++)
+	{
+		if (inputPos.x == m_Pos[i].x || inputPos.y == m_Pos[i].y)
+		{
+			return false;
+		}
+
+	}
+
+	return true;
+}

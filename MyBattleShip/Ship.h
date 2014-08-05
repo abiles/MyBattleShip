@@ -50,8 +50,10 @@ public:
 	ShipType GetShipType(){ return m_ShipType; }
 
 	bool IsPosFull();
+	bool OverlapCheck(ShipPos);
 
 	void PrintShipPos();
+
 protected:
 	ShipType m_ShipType;
 	int m_Size;
