@@ -1,4 +1,5 @@
 #pragma once
+#include "Aircraft.h"
 
 enum Direction
 {
@@ -15,7 +16,13 @@ public:
 	Player();
 	~Player();
 
+
+	void PrintAllShip();
+	void AssignShip();
+
+
 private:
 
+	Aircraft m_Aircraft;
 };
 

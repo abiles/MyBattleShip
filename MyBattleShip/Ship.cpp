@@ -4,6 +4,7 @@
 
 Ship::Ship()
 {
+	memset(m_Pos, 0, sizeof(ShipPos)*m_Size);
 }
 
 
@@ -46,4 +47,23 @@ bool Ship::SetPos(ShipPos inputPos, int posIdx)
 
 	return true;
 
+}
+
+void Ship::PrintShipPos()
+{
+	
+	printf_s("%s : ", m_ShipName.c_str());
+
+	for (int i = 0; i < m_Size; i++)
+	{
+		if (m_Pos[i].x == 0)
+		{
+			break;
+		}
+		printf_s("%c%c\t", m_Pos[i].x, m_Pos[i].y);
+	}
+
+	printf_s("\n");
+	return;
+	
 }

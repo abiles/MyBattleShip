@@ -39,7 +39,7 @@ public:
 
 	ShipType GetShipType(){ return m_ShipType; }
 
-
+	void PrintShipPos();
 protected:
 	ShipType m_ShipType;
 	int m_Size;
