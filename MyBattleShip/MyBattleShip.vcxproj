@@ -78,6 +78,8 @@
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="BattleShip.h" />
+    <ClInclude Include="Cruiser.h" />
+    <ClInclude Include="Destroyer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="stdafx.h" />
@@ -86,6 +88,8 @@
   <ItemGroup>
     <ClCompile Include="Aircraft.cpp" />
     <ClCompile Include="BattleShip.cpp" />
+    <ClCompile Include="Cruiser.cpp" />
+    <ClCompile Include="Destroyer.cpp" />
     <ClCompile Include="MyBattleShip.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ship.cpp" />

@@ -51,10 +51,19 @@ bool Ship::AddPos(ShipPos inputPos, int posIdx)
 
 }
 
+bool Ship::AddPos(char inputX, char inputY, int posIdx)
+{
+	ShipPos inputPos;
+	inputPos.x = inputX;
+	inputPos.y = inputY;
+
+	return Ship::AddPos(inputPos, posIdx);
+}
+
 void Ship::PrintShipPos()
 {
 	
-	printf_s("%s : ", m_ShipName.c_str());
+	printf_s("%s\t:\t", m_ShipName.c_str());
 
 	for (int i = 0; i < m_Size; i++)
 	{
@@ -85,14 +94,23 @@ bool Ship::IsPosFull()
 
 bool Ship::OverlapCheck(ShipPos inputPos)
 {
-	for (int i = 0; i < MAX_SHIP_SIZE; i++)
+	for (int i = 0; i < m_Size; i++)
 	{
-		if (inputPos.x == m_Pos[i].x || inputPos.y == m_Pos[i].y)
+		if (inputPos.x == m_Pos[i].x && inputPos.y == m_Pos[i].y)
 		{
-			return false;
+			return true;
 		}
 
 	}
 
-	return true;
+	return false;
+}
+
+bool Ship::OverlapCheck(char inputX, char inputY)
+{
+	ShipPos inputPos;
+	inputPos.x = inputX;
+	inputPos.y = inputY;
+
+	return Ship::OverlapCheck(inputPos);
 }

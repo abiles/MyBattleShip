@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+
 #define MAX_SHIP_SIZE 5
 
 enum ShipDirection
@@ -44,6 +44,7 @@ public:
 
 	ShipPos GetPos(int posIdx){ return m_Pos[posIdx]; }
 	bool AddPos(ShipPos, int);
+	bool AddPos(char, char, int);
 
 	int GetSize(){ return m_Size; }
 
@@ -51,6 +52,7 @@ public:
 
 	bool IsPosFull();
 	bool OverlapCheck(ShipPos);
+	bool OverlapCheck(char, char);
 
 	void PrintShipPos();
 
@@ -60,5 +62,13 @@ protected:
 	int m_HP;
 	std::string m_ShipName;
 	ShipPos m_Pos[MAX_SHIP_SIZE];
+
+	ShipPos m_ShipDir[MAX_DIRECTION] =
+	{
+		{0,-1}, //NORTH
+		{1,0}, //EAST
+		{0,1}, //SOUTH
+		{-1,0}// WEST
+	};
 };
 

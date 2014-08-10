@@ -7,7 +7,7 @@ BattleShip::BattleShip()
 	m_Size = 4;
 	m_HP = 4;
 	m_ShipType = BATTLESHIP;
-	
+	m_ShipName = "BattleShip";
 }
 
 

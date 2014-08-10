@@ -9,8 +9,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Player Player1;
 
-
-	Player1.PrintShip();
+	Player1.AssignShips();
+	Player1.PrintShips();
 
 
 	
