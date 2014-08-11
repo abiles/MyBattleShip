@@ -54,6 +54,9 @@ public:
 	bool OverlapCheck(ShipPos);
 	bool OverlapCheck(char, char);
 
+	void MakeDir();
+	ShipPos GetDirPos(int);
+
 	void PrintShipPos();
 
 protected:
@@ -62,13 +65,7 @@ protected:
 	int m_HP;
 	std::string m_ShipName;
 	ShipPos m_Pos[MAX_SHIP_SIZE];
-
-	ShipPos m_ShipDir[MAX_DIRECTION] =
-	{
-		{0,-1}, //NORTH
-		{1,0}, //EAST
-		{0,1}, //SOUTH
-		{-1,0}// WEST
-	};
+	ShipPos m_ShipDir[MAX_DIRECTION];
+	
 };
 

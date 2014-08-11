@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "Player.h"
 
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 
@@ -11,6 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	Player1.AssignShips();
 	Player1.PrintShips();
+	Player1.PrintMap();
 
 
 	

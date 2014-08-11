@@ -5,6 +5,7 @@
 Ship::Ship()
 {
 	memset(m_Pos, 0, sizeof(ShipPos)*MAX_SHIP_SIZE);
+	
 }
 
 
@@ -65,7 +66,7 @@ void Ship::PrintShipPos()
 	
 	printf_s("%s\t:\t", m_ShipName.c_str());
 
-	for (int i = 0; i < m_Size; i++)
+	for (int i = 0; i < m_Size; ++i)
 	{
 		if (m_Pos[i].x == 0)
 		{
@@ -113,4 +114,19 @@ bool Ship::OverlapCheck(char inputX, char inputY)
 	inputPos.y = inputY;
 
 	return Ship::OverlapCheck(inputPos);
+}
+
+void Ship::MakeDir()
+{
+	m_ShipDir[NORTH] = { 0, -1 };
+	m_ShipDir[EAST] = { 1, 0 };
+	m_ShipDir[SOUTH] = { 0, 1 };
+	m_ShipDir[WEST] = { 1, 0 };
+
+	return;
+}
+
+ShipPos Ship::GetDirPos(int dir)
+{
+	return m_ShipDir[dir];
 }
