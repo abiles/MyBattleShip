@@ -130,3 +130,31 @@ ShipPos Ship::GetDirPos(int dir)
 {
 	return m_ShipDir[dir];
 }
+
+void Ship::HitResultApply()
+{
+	--m_HP;
+
+	return;
+}
+
+AttackState Ship::CheckAttack(ShipPos attackPos)
+{
+	for (int i = 0; i < GetSize(); ++i)
+	{
+		if (GetPos(i).x == attackPos.x && GetPos(i).y == attackPos.y)
+		{
+			HitResultApply();
+
+			if (GetHP() == 0)
+			{
+				return DESTROY;
+			}
+
+			
+			return HIT;
+		}
+	}
+
+
+}

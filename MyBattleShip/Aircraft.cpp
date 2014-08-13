@@ -16,3 +16,10 @@ Aircraft::~Aircraft()
 {
 
 }
+
+AttackState Aircraft::CheckAttack(ShipPos attackPos)
+{
+	AttackState result = Ship::CheckAttack(attackPos);
+
+	return (result == DESTROY) ? AIRCRAFT_DESTROY : result;
+}

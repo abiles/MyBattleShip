@@ -214,4 +214,38 @@ void Player::PrintMap()
 	return;
 }
 
+ShipPos Player::AttackShip()
+{
+	ShipPos AttackPos;
+
+	AttackPos.x = 'a';
+	AttackPos.y = '1';
+
+	return AttackPos;
+}
+
+AttackState Player::CheckAttackResult(ShipPos attackPos)
+{
+	AttackState tmpState;
+
+	for (int i = 0; i < m_ShipVector.size(); ++i)
+	{
+		tmpState = m_ShipVector[i]->CheckAttack(attackPos);
+		
+		if ( tmpState == HIT || tmpState== DESTROY)
+		{
+			return tmpState;
+		}
+	}
+
+
+	return MISS;
+
+}
+
+void Player::GetAttackResult(AttackState attackState)
+{
+
+}
+
 

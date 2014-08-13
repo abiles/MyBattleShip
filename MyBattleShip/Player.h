@@ -18,14 +18,18 @@ public:
 	void PrintShips();
 	void PrintMap();
 	bool CheckAllShipAssigned();
-	bool CheckValidPos(char, char, int, int);
-	bool CheckLastPointFine(char, char, int, int);
-	bool CheckOtherShipOverlap(char, char, int, int);
+	bool CheckValidPos(char startX, char startY, int direction, int shipIdx);
+	bool CheckLastPointFine(char startX, char startY, int direction, int shipIdx);
+	bool CheckOtherShipOverlap(char startX, char startY, int direction, int shipIdx);
 	void initMember();
 	void delMember();
 	void AssignShips();
-	void ValidPosLauchToShip(char, char, int, int);
-	void ValidPosSetToMap(char, char, int, int);
+	void ValidPosLauchToShip(char startX, char startY, int direction, int shipIdx);
+	void ValidPosSetToMap(char startX, char startY, int direction, int shipIdx);
+
+	ShipPos AttackShip();
+	AttackState CheckAttackResult(ShipPos AttackPos);
+	void GetAttackResult(AttackState attackState);
 
 private:
 

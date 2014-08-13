@@ -23,6 +23,13 @@ enum ShipType
 
 };
 
+enum AttackState
+{
+	HIT,
+	MISS,
+	DESTROY,
+};
+
 
 struct ShipPos
 {
@@ -58,6 +65,9 @@ public:
 	ShipPos GetDirPos(int);
 
 	void PrintShipPos();
+
+	AttackState CheckAttack(ShipPos attackPos);
+	void HitResultApply();
 
 protected:
 	ShipType m_ShipType;

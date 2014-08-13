@@ -14,3 +14,10 @@ BattleShip::BattleShip()
 BattleShip::~BattleShip()
 {
 }
+
+AttackState BattleShip::CheckAttack(ShipPos attackPos)
+{
+	AttackState result = Ship::CheckAttack(attackPos);
+
+	return (result == DESTROY) ? BATTLESHIP_DESTROY : result;
+}
