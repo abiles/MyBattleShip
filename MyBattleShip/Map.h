@@ -1,8 +1,7 @@
 #pragma once
 
-#define MAX_HORIZONTAL 8
-#define MAX_VERTICAL 8
-#define SHIP_LAUNCH 1
+#include "EnumHeader.h"
+
 
 class Map
 {
@@ -13,8 +12,14 @@ public:
 public:
 	void initMap();
 	void PrintMapData();
-	int GetEachPosDataInMap(char, char);
-	void SetEachPosDataInMap(char, char);
+	int GetEachPosDataInMap(ShipPos shipPos);
+	int GetEachPosDataInMap(char x, char y);
+
+	void SetEachPosDataInMap(ShipPos shipPos);
+	void SetEachPosDataInMap(char x, char y);
+
+	void MarkAttackedPos(ShipPos AttackedPos);
+	void MarkAttackedPos(char x, char y);
 
 protected:
 	int** m_Map;

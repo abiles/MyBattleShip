@@ -2,7 +2,6 @@
 #include "Map.h"
 
 
-
 Map::Map()
 {
 	initMap();
@@ -27,14 +26,35 @@ void Map::initMap()
 
 int Map::GetEachPosDataInMap(char x, char y )
 {
-	int tmpData = m_Map[x-'a'][y-'1'];
+	ShipPos tmpShipPos;
+	tmpShipPos.x = x;
+	tmpShipPos.y = y;
+
+	return GetEachPosDataInMap(tmpShipPos);
+}
+
+int Map::GetEachPosDataInMap(ShipPos shipPos)
+{
+	
+
+	int tmpData = m_Map[shipPos.x - 'a'][shipPos.y - '1'];
 
 	return tmpData;
 }
 
 void Map::SetEachPosDataInMap(char x, char y)
 {
-	m_Map[x - 'a'][y - '1'] = SHIP_LAUNCH;
+	ShipPos tmpShipPos;
+	tmpShipPos.x = x;
+	tmpShipPos.y = y;
+
+	SetEachPosDataInMap(tmpShipPos);
+	return;
+}
+
+void Map::SetEachPosDataInMap(ShipPos shipPos)
+{
+	m_Map[shipPos.x - 'a'][shipPos.y - '1'] = SHIP_LAUNCH;
 
 	return;
 }
@@ -51,4 +71,18 @@ void Map::PrintMapData()
 		}
 		printf_s("\n");
 	}
+}
+
+void Map::MarkAttackedPos(ShipPos AttackedPos)
+{
+	m_Map[AttackedPos.x-'a'][AttackedPos.y-'1'] = 0;
+	return;
+}
+
+void Map::MarkAttackedPos(char x, char y)
+{
+	ShipPos tmpAttackedPos;
+	tmpAttackedPos.x = x;
+	tmpAttackedPos.y = y;
+	MarkAttackedPos(tmpAttackedPos);
 }

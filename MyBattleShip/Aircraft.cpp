@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Aircraft.h"
+#include "EnumHeader.h"
+
 
 
 Aircraft::Aircraft()
@@ -17,9 +19,9 @@ Aircraft::~Aircraft()
 
 }
 
-AttackState Aircraft::CheckAttack(ShipPos attackPos)
+HitResult Aircraft::CheckAttack(ShipPos attackPos)
 {
-	AttackState result = Ship::CheckAttack(attackPos);
+	HitResult result = Ship::CheckAttack(attackPos);
 
 	return (result == DESTROY) ? AIRCRAFT_DESTROY : result;
 }

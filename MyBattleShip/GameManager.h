@@ -1,9 +1,10 @@
 #pragma once
-
 #include "EnumHeader.h"
+
 
 class Player;
 class Ship;
+class Map;
 
 class GameManager
 {
@@ -11,16 +12,33 @@ public:
 	GameManager();
 	~GameManager();
 
-	void InitGame();
-	void EndGame();
+	void		InitGame();
+	void		PlayingGame();
+	void		EndGame();
 
-	void DeliverPlayerAttack(ShipPos playerAttackPos);
+	bool		IsGameEnd();
+
+	void		GetAttackPosFromPlayer();
+	ShipPos		DeliverAttackPos();
+	void		SetAttackedResultFromDef(HitResult HitResultFromDef);
+	HitResult	GetAttackedResultFromDef();
+	void		HitResultPrint();
+
+	//HitResult	JudgeAttackResult();
+
+
+	/*void DeliverPlayerAttack(ShipPos playerAttackPos);
 	void ShowAttackResult();
-	void InformAttackStateFromDef();
+	void InformAttackStateFromDef();*/
 
 private:
-	Player* m_Attaker;
+	Player* m_Attacker;
 	Player* m_Defender;
-	AttackState m_AttackState;
+
+
+	
+
+	ShipPos m_AttackPosFromPlayer;
+	HitResult m_AttackedResultFromDef;
 };
 

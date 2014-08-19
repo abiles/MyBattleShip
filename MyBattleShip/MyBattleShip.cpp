@@ -3,17 +3,17 @@
 
 #include "stdafx.h"
 #include "Player.h"
-
+#include "GameManager.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 
-	Player Player1;
+	GameManager g1;
 
-	Player1.AssignShips();
-	Player1.PrintShips();
-	Player1.PrintMap();
+	g1.InitGame();
+	g1.PlayingGame();
+
 
 
 	

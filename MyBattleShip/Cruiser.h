@@ -8,6 +8,6 @@ public:
 	Cruiser();
 	~Cruiser();
 	
-	AttackState CheckAttack(ShipPos attackPos);
+	HitResult CheckAttack(ShipPos attackPos);
 };
 

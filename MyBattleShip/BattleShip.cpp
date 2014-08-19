@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "BattleShip.h"
+#include "EnumHeader.h"
+
 
 
 BattleShip::BattleShip()
@@ -15,9 +17,9 @@ BattleShip::~BattleShip()
 {
 }
 
-AttackState BattleShip::CheckAttack(ShipPos attackPos)
+HitResult BattleShip::CheckAttack(ShipPos attackPos)
 {
-	AttackState result = Ship::CheckAttack(attackPos);
+	HitResult result = Ship::CheckAttack(attackPos);
 
 	return (result == DESTROY) ? BATTLESHIP_DESTROY : result;
 }

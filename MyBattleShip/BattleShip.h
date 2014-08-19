@@ -1,6 +1,6 @@
 #pragma once
 #include "Ship.h"
-#include "EnumHeader.h"
+
 
 class BattleShip :
 	public Ship
@@ -10,6 +10,6 @@ public:
 	~BattleShip();
 
 
-	AttackState CheckAttack(ShipPos attackPos);
+	HitResult CheckAttack(ShipPos attackPos);
 };
 

@@ -11,18 +11,30 @@
 
 Player::Player()
 {
-	initMember();
-	m_ShipVector.push_back(m_Aircraft);
-	m_ShipVector.push_back(m_BattleShip);
-	m_ShipVector.push_back(m_Cruiser);
-	m_ShipVector.push_back(m_Destroyer);
+	m_ShipVector.push_back(new Aircraft());
+	m_ShipVector.push_back(new BattleShip());
+	m_ShipVector.push_back(new Cruiser());
+	m_ShipVector.push_back(new Destroyer());
+
+	m_PlayerMap = new Map();
+	m_OterPlayerMap = new Map();
+
+	
 }
 
 
 Player::~Player()
 {
-	delMember();
+	m_ShipVector.erase(m_ShipVector.begin(), m_ShipVector.end());
+// 	for (auto ship = m_ShipVector.begin; ship != m_ShipVector.end();)
+// 	{
+// 			ship = m_ShipVector.erase(ship);
+// 	}
+	m_ShipVector.clear();
+
+	delete m_PlayerMap;
 }
+
 
 void Player::PrintShips()
 {
@@ -77,10 +89,10 @@ void Player::AssignShips()
 		
 		if (CheckValidPos(startX, startY, direction, shipIdx))
 		{
-			//타당한 위치 라면
+			//타당한 위치라면
 			//이 시작위치 이 방향으로 크기만큼 채워 넣기 
-			//맵에도 채워 넣기 
 			ValidPosLauchToShip(startX, startY, direction, shipIdx);
+			//맵에도 채워 넣기 
 			ValidPosSetToMap(startX, startY, direction, shipIdx);
 			
 			shipIdx++;
@@ -96,6 +108,8 @@ bool Player::CheckAllShipAssigned()
 
 	ShipPos tmpPos = { 0, };
 	//전체 배를 다보기 위한 for문
+	//항상 모든 배를 다 봐야 한다는 단점이 있네..
+
 	for (std::vector<Ship*>::size_type i = 0; i < m_ShipVector.size(); ++i)
 	{
 		//각각의 배마다 모든 포지션을 확인하기 위한 for문
@@ -184,28 +198,8 @@ void Player::ValidPosSetToMap(char startX, char startY, int direction, int shipI
 	return;
 }
 
-void Player::initMember()
-{
-	m_Aircraft = new Aircraft;
-	m_BattleShip = new BattleShip;
-	m_Cruiser = new Cruiser;
-	m_Destroyer = new Destroyer;
-	m_PlayerMap = new Map;
 
-	return;
-}
 
-void Player::delMember()
-{
-	delete m_Aircraft;
-	delete m_BattleShip;
-	delete m_Cruiser;
-	delete m_Destroyer;
-	delete m_PlayerMap;
-
-	return;
-
-}
 
 void Player::PrintMap()
 {
@@ -214,38 +208,119 @@ void Player::PrintMap()
 	return;
 }
 
-ShipPos Player::AttackShip()
+//Map* Player::SubmitMyMapToGM()
+//{
+//	return m_PlayerMap;
+//}
+
+ShipPos Player::SelectPosToAttack()
 {
-	ShipPos AttackPos;
+	ShipPos attackPos;
 
-	AttackPos.x = 'a';
-	AttackPos.y = '1';
-
-	return AttackPos;
+	printf_s("Select Attack Pos X Y: ");
+	scanf_s("%c%c",&attackPos.x,1, &attackPos.y,1);
+	int a = 0;
+	while (a != '\n' && a != EOF)
+		a = getchar();
+	
+	return attackPos;
 }
 
-AttackState Player::CheckAttackResult(ShipPos attackPos)
+void Player::SetAttackedPos(ShipPos attackedPos)
 {
-	AttackState tmpState;
+	m_PosAttackedFromPlayer = attackedPos;
 
-	for (int i = 0; i < m_ShipVector.size(); ++i)
+	return;
+}
+
+void Player::MarkAttackFromOtherPlayer()
+{
+	m_PlayerMap->MarkAttackedPos(m_PosAttackedFromPlayer);
+	return;
+}
+
+void Player::SetAttackedResult()
+{
+	
+
+	for (std::vector<Ship*>::size_type i = 0; i < m_ShipVector.size(); ++i)
 	{
-		tmpState = m_ShipVector[i]->CheckAttack(attackPos);
-		
-		if ( tmpState == HIT || tmpState== DESTROY)
-		{
-			return tmpState;
-		}
+		 m_AttackedResult = m_ShipVector[i]->CheckAttack(m_PosAttackedFromPlayer);
+		 if (m_AttackedResult != HIT_NONE)
+		 {
+			 break;
+		 }
+	}
+
+	if (m_AttackedResult == HIT_NONE)
+	{
+		m_AttackedResult = MISS;
 	}
 
 
-	return MISS;
 
+	return ;
 }
 
-void Player::GetAttackResult(AttackState attackState)
+HitResult Player::GetAttackedResult()
 {
+	return m_AttackedResult;
+}
+
+bool Player::IsAllShipDestroyed()
+{
+	for (char i = 'a'; i < 'a' + MAX_HORIZONTAL; ++i)
+	{
+		for (char j = '1'; j < '1' + MAX_VERTICAL; ++j)
+		{
+			if (m_PlayerMap->GetEachPosDataInMap(i, j) == SHIP_LAUNCH)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 
 }
+
+
+
+
+
+
+//ShipPos Player::AttackShip()
+//{
+//	ShipPos AttackPos;
+//
+//	AttackPos.x = 'a';
+//	AttackPos.y = '1';
+//
+//	return AttackPos;
+//}
+//
+//AttackState Player::CheckAttackResult(ShipPos attackPos)
+//{
+//	AttackState tmpState;
+//
+//	for (int i = 0; i < m_ShipVector.size(); ++i)
+//	{
+//		tmpState = m_ShipVector[i]->CheckAttack(attackPos);
+//		
+//		if ( tmpState == HIT || tmpState== DESTROY)
+//		{
+//			return tmpState;
+//		}
+//	}
+//
+//
+//	return MISS;
+//
+//}
+//
+//void Player::GetAttackResult(AttackState attackState)
+//{
+//
+//}
 
 

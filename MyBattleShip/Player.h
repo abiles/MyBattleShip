@@ -1,10 +1,8 @@
 #pragma once
 
+#include "EnumHeader.h"
 class Ship;
-class Aircraft;
-class BattleShip;
-class Cruiser;
-class Destroyer;
+
 class Map;
 
 class Player
@@ -14,31 +12,44 @@ public:
 	Player();
 	~Player();
 
+	
 
-	void PrintShips();
-	void PrintMap();
+	//배치
+	void AssignShips();
 	bool CheckAllShipAssigned();
 	bool CheckValidPos(char startX, char startY, int direction, int shipIdx);
 	bool CheckLastPointFine(char startX, char startY, int direction, int shipIdx);
 	bool CheckOtherShipOverlap(char startX, char startY, int direction, int shipIdx);
-	void initMember();
-	void delMember();
-	void AssignShips();
 	void ValidPosLauchToShip(char startX, char startY, int direction, int shipIdx);
 	void ValidPosSetToMap(char startX, char startY, int direction, int shipIdx);
 
-	ShipPos AttackShip();
-	AttackState CheckAttackResult(ShipPos AttackPos);
-	void GetAttackResult(AttackState attackState);
+	//맵 제출
+	//Map* SubmitMyMapToGM();
+
+	//프린트
+	void PrintShips();
+	void PrintMap();
+
+	//공격
+	ShipPos SelectPosToAttack();
+
+	//방어
+	void		 SetAttackedPos(ShipPos attackedPos);
+	void		 MarkAttackFromOtherPlayer();
+	void		 SetAttackedResult();
+	HitResult	 GetAttackedResult();
+	bool		 IsAllShipDestroyed();
+	/*ShipPos AttackShip();
+
+	void GetAttackResult(AttackState attackState);*/
 
 private:
 
-	Aircraft* m_Aircraft;
-	BattleShip* m_BattleShip ;
-	Cruiser* m_Cruiser;
-	Destroyer* m_Destroyer;
 
-	Map* m_PlayerMap;
-	std::vector<Ship*> m_ShipVector;
+	Map*					m_PlayerMap;
+	Map*					m_OterPlayerMap;
+	ShipPos					m_PosAttackedFromPlayer;
+	std::vector<Ship*>		m_ShipVector;
+	HitResult				m_AttackedResult;
 };
 

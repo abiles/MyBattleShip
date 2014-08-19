@@ -138,11 +138,11 @@ void Ship::HitResultApply()
 	return;
 }
 
-AttackState Ship::CheckAttack(ShipPos attackPos)
+HitResult Ship::CheckAttack(ShipPos attackedPos)
 {
 	for (int i = 0; i < GetSize(); ++i)
 	{
-		if (GetPos(i).x == attackPos.x && GetPos(i).y == attackPos.y)
+		if (GetPos(i).x == attackedPos.x && GetPos(i).y == attackedPos.y)
 		{
 			HitResultApply();
 
@@ -156,5 +156,5 @@ AttackState Ship::CheckAttack(ShipPos attackPos)
 		}
 	}
 
-
+	return HIT_NONE;
 }
