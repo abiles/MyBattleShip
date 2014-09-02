@@ -75,7 +75,9 @@ void Map::PrintMapData()
 
 void Map::MarkAttackedPos(ShipPos AttackedPos)
 {
-	m_Map[AttackedPos.x-'a'][AttackedPos.y-'1'] = 0;
+	m_Map[AttackedPos.x-'a'][AttackedPos.y-'1'] = 2;
+
+	//맞은 부분을 0으로 바꾸지 말고 맞았다는 표시를 할 수 있게 하자. 
 	return;
 }
 

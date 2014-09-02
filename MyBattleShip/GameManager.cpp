@@ -42,6 +42,7 @@ HitResult GameManager::GetAttackedResultFromDef()
 
 void GameManager::InitGame()
 {
+
 	m_Defender->AssignShips();
 	m_Defender->PrintShips();
 	m_Defender->PrintMap();
@@ -49,15 +50,20 @@ void GameManager::InitGame()
 
 void GameManager::PlayingGame()
 {
+	//m_AttakPosFromPlayer 를 여기다 선언하고 쓴다면?
+
 	while (!IsGameEnd())
 	{
 		m_AttackPosFromPlayer = m_Attacker->SelectPosToAttack();
 		system("cls");
 		
+		//defender가 하는 일을 묶어라?
+		//왜? 바로 보이는게 더 나을수도 있다. 
 		m_Defender->SetAttackedPos(m_AttackPosFromPlayer);
 		m_Defender->MarkAttackFromOtherPlayer();
 		m_Defender->SetAttackedResult();
 		m_AttackedResultFromDef = m_Defender->GetAttackedResult();
+		m_Defender->PrintShips();
 		HitResultPrint();
 		m_Defender->PrintMap();
 
@@ -78,6 +84,7 @@ void GameManager::EndGame()
 
 void GameManager::HitResultPrint()
 {
+	printf_s("\n");
 	
 	switch (m_AttackedResultFromDef)
 	{

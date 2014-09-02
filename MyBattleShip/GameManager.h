@@ -32,6 +32,7 @@ public:
 	void InformAttackStateFromDef();*/
 
 private:
+
 	Player* m_Attacker;
 	Player* m_Defender;
 
