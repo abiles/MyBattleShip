@@ -11,6 +11,7 @@ public:
 
 public:
 	void initMap();
+	void SetMap();
 	void PrintMapData();
 	int GetEachPosDataInMap(ShipPos shipPos);
 	int GetEachPosDataInMap(char x, char y);

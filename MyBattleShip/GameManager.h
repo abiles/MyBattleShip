@@ -12,10 +12,6 @@ public:
 	GameManager();
 	~GameManager();
 
-	void		InitGame();
-	void		PlayingGame();
-	void		EndGame();
-
 	bool		IsGameEnd();
 
 	void		GetAttackPosFromPlayer();
@@ -23,6 +19,14 @@ public:
 	void		SetAttackedResultFromDef(HitResult HitResultFromDef);
 	HitResult	GetAttackedResultFromDef();
 	void		HitResultPrint();
+
+	void		GameRunning();
+
+private:
+	void		InitGame();
+	void		PlayingGame();
+	void		EndGame(int turnNum);
+
 
 	//HitResult	JudgeAttackResult();
 
@@ -36,6 +40,7 @@ private:
 	Player*		m_Attacker;
 	Player*		m_Defender;
 
+	int			m_TotalTurnNum;
 	ShipPos		m_AttackPosFromPlayer;
 	HitResult	m_AttackedResultFromDef;
 };

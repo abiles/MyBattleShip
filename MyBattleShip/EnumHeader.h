@@ -46,3 +46,4 @@ struct ShipPos
 #define MAX_HORIZONTAL 8
 #define MAX_VERTICAL 8
 #define SHIP_LAUNCH 1
+#define GAMERUNNUM 2

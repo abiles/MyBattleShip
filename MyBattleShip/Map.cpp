@@ -94,3 +94,17 @@ void Map::MarkAttackedPos(char x, char y)
 	tmpAttackedPos.y = y;
 	MarkAttackedPos(tmpAttackedPos);
 }
+
+void Map::SetMap()
+{
+	for (int i = 0; i < MAX_HORIZONTAL; ++i)
+	{
+		for (int j = 0; j < MAX_VERTICAL; ++j)
+		{
+			m_Map[i][j] = 0;
+		}
+	}
+}
+
+
+

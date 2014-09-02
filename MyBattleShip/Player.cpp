@@ -91,30 +91,6 @@ void Player::AssignShips()
 	
 	int shipIdx = 0;
 
-	//for (; shipIdx < m_ShipVector.size(); )
-	//{
-	//	//배를 하나만 체크해도 된다. 
-	//	if (CheckAllShipAssigned(shipIdx))
-	//	{
-	//		char startX = rand() % MAX_HORIZONTAL + 'a';
-	//		char startY = rand() % MAX_VERTICAL + '1';
-	//		int direction = rand() % MAX_DIRECTION;
-
-
-	//		if (CheckValidPos(startX, startY, direction, shipIdx))
-	//		{
-	//			//타당한 위치라면
-	//			//이 시작위치 이 방향으로 크기만큼 채워 넣기 
-	//			ValidPosLauchToShip(startX, startY, direction, shipIdx);
-	//			//맵에도 채워 넣기 
-	//			ValidPosSetToMap(startX, startY, direction, shipIdx);
-
-	//			shipIdx++;
-	//		}
-	//	}
-	//}
-	
-	
 	while (!CheckAllShipAssigned())
 	{
 
@@ -131,7 +107,7 @@ void Player::AssignShips()
 			//맵에도 채워 넣기 
 			ValidPosSetToMap(startX, startY, direction, shipIdx);
 			
-			shipIdx++;
+			++shipIdx;
 		}
 
 	}

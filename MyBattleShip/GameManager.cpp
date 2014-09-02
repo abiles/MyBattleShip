@@ -10,6 +10,7 @@ GameManager::GameManager()
 {
 	m_Attacker = new Player();
 	m_Defender = new Player();
+	m_TotalTurnNum = 0;
 }
 
 
@@ -52,13 +53,11 @@ void GameManager::InitGame()
 
 void GameManager::PlayingGame()
 {
-	//m_AttakPosFromPlayer 를 여기다 선언하고 쓴다면?
-
 	while (!IsGameEnd())
 	{
 		m_AttackPosFromPlayer = m_Attacker->SelectPosToAttack();
 		system("cls");
-		
+
 		//defender가 하는 일을 묶어라?
 		//왜? 바로 보이는게 더 나을수도 있다. 
 		m_Defender->SetAttackedPos(m_AttackPosFromPlayer);
@@ -68,10 +67,9 @@ void GameManager::PlayingGame()
 		m_Defender->PrintShips();
 		HitResultPrint();
 		m_Defender->PrintMap();
-		
+		++m_TotalTurnNum;
 	}
-	printf_s("\n");
-	printf_s("All Ships are Destroyed!!!\n");
+	
 }
 
 bool GameManager::IsGameEnd()
@@ -79,9 +77,15 @@ bool GameManager::IsGameEnd()
 	return m_Defender->IsAllShipDestroyed();
 }
 
-void GameManager::EndGame()
+void GameManager::EndGame(int turnNum)
 {
-
+	printf_s("\n");
+	printf_s("Game %d's All Ships are Destroyed!!!\n", turnNum); 
+	if (turnNum == GAMERUNNUM)
+	{
+		printf_s("Average attack turnNum = %f", (double)(m_TotalTurnNum / 10));
+	}
+	m_Defender->GetPlayerMap()->SetMap();
 }
 
 void GameManager::HitResultPrint()
@@ -118,6 +122,17 @@ void GameManager::HitResultPrint()
 		break;
 	}
 	
+}
+
+void GameManager::GameRunning()
+{
+	for (int i = 0; i < GAMERUNNUM; ++i)
+	{
+		InitGame();
+		PlayingGame();
+		EndGame(i+1);
+	}
+
 }
 
 

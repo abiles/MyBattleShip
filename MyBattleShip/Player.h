@@ -39,6 +39,9 @@ public:
 	void		 SetAttackedResult();
 	HitResult	 GetAttackedResult();
 	bool		 IsAllShipDestroyed();
+	Map*		 GetPlayerMap() const { return m_PlayerMap; }
+
+
 	/*ShipPos AttackShip();
 
 	void GetAttackResult(AttackState attackState);*/
