@@ -15,6 +15,8 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
+	delete m_Attacker;
+	delete m_Defender;
 }
 
 void GameManager::GetAttackPosFromPlayer()
@@ -66,7 +68,7 @@ void GameManager::PlayingGame()
 		m_Defender->PrintShips();
 		HitResultPrint();
 		m_Defender->PrintMap();
-
+		
 	}
 	printf_s("\n");
 	printf_s("All Ships are Destroyed!!!\n");

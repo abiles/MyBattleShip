@@ -25,14 +25,28 @@ Player::Player()
 
 Player::~Player()
 {
-	m_ShipVector.erase(m_ShipVector.begin(), m_ShipVector.end());
-// 	for (auto ship = m_ShipVector.begin; ship != m_ShipVector.end();)
-// 	{
-// 			ship = m_ShipVector.erase(ship);
-// 	}
+	
+
+	for (auto iterShip = m_ShipVector.begin(); iterShip != m_ShipVector.end();)
+	{
+		
+
+		if((*iterShip))
+		{
+			delete (*iterShip);
+			*iterShip = nullptr;
+			iterShip = m_ShipVector.erase(iterShip);
+		}
+		else
+		{
+			iterShip = m_ShipVector.erase(iterShip);
+		}
+	}
+
 	m_ShipVector.clear();
 
 	delete m_PlayerMap;
+	delete m_OterPlayerMap;
 }
 
 

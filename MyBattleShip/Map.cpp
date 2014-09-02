@@ -10,6 +10,12 @@ Map::Map()
 
 Map::~Map()
 {
+	for (int i = 0; i < MAX_HORIZONTAL; ++i)
+	{
+		delete[] m_Map[i];
+	}
+
+	delete[] m_Map;
 }
 
 void Map::initMap()

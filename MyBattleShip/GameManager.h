@@ -33,13 +33,10 @@ public:
 
 private:
 
-	Player* m_Attacker;
-	Player* m_Defender;
+	Player*		m_Attacker;
+	Player*		m_Defender;
 
-
-	
-
-	ShipPos m_AttackPosFromPlayer;
-	HitResult m_AttackedResultFromDef;
+	ShipPos		m_AttackPosFromPlayer;
+	HitResult	m_AttackedResultFromDef;
 };
 
