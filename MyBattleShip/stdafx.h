@@ -17,8 +17,13 @@
 #include <time.h>
 #include <string>
 #include <windows.h>
-#include <crtdbg.h>
 
 #ifdef _DEBUG
-#define  new new(_CLIENT_BLOCK, __FILE__, __LINE__)
+#include <vld.h>
 #endif
+
+//#include <crtdbg.h>
+
+//#ifdef _DEBUG
+//#define  new new(_CLIENT_BLOCK, __FILE__, __LINE__)
+//#endif
